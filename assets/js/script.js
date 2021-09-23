@@ -41,6 +41,8 @@ let saveTasks = function () {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
+$("#modalDueDate").datepicker({ minDate: 1 });
+
 $(".list-group").on("click", "p", function () {
   let text = $(this).text().trim();
   let textInput = $("<textarea>").addClass("form-control").val(text);
@@ -82,12 +84,21 @@ $(".list-group").on("click", "span", function () {
   //swap out the elements
   $(this).replaceWith(dateInput);
 
+  //enable jquery ui datepicker
+  dateInput.datepicker({
+    minDate: 1,
+    onClose: function () {
+      // when calendar is closed, force a change event on dateInput
+      $(this).trigger("change");
+    },
+  });
+
   // automatically focus on new element
   dateInput.trigger("focus");
 });
 
 // due date altered state removal
-$(".list-group").on("blur", "input[type='text']", function () {
+$(".list-group").on("change", "input[type='text']", function () {
   // get current date text
   let date = $(this).val().trim();
 
@@ -155,19 +166,19 @@ $(".card .list-group").sortable({
 });
 
 $("#trash").droppable({
-  accept: ".card .list-group-item", 
+  accept: ".card .list-group-item",
   tolerance: "touch",
-  drop: function(event, ui) {
-    console.log("drop")
+  drop: function (event, ui) {
+    console.log("drop");
     ui.draggable.remove();
-  }, 
-  over: function(event, ui) {
-    console.log("over")
   },
-  out: function(event, ui) {
-    console.log("out")
-  }
-})
+  over: function (event, ui) {
+    console.log("over");
+  },
+  out: function (event, ui) {
+    console.log("out");
+  },
+});
 
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function () {
