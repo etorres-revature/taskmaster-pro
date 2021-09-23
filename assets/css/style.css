@@ -29,7 +29,7 @@ h6 {
   font-size: 2.3rem;
   font-family: "Staatliches", sans-serif;
   transform: translateY(150px);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background-clip: rgba(234, 0, 39, 0.7);
 }
 
@@ -40,4 +40,34 @@ h6 {
 
 .trash-active {
   background-color: rgba(234, 0, 39, 1);
+}
+
+.btn-add,
+.btn-save {
+  background-clip: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 45%,
+    #2bff88 90%
+  );
+  transition: all 0.5s ease-out;
+  background-size: 1px 6.25rem;
+  background-position: 0 -0.625rem;
+}
+
+.btn-close,
+.btn-delete {
+  background-color: #ea0028;
+  background-image: linear-gradient(180deg, #ff9a8b 0%, #ea0028 100%);
+  transition: all 0.5s ease-out;
+  background-size: 1px 5.25rem;
+  background-position: 0 -0.625rem;
+}
+
+.btn-add:hover,
+.btn-save:hover,
+.btn-close:hover,
+.btn-delete:hover {
+  background-position: 1px -3.125rem;
 }
