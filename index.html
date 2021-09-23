@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Taskmaster Pro</title>
   </head>
@@ -13,7 +23,15 @@
   <body>
     <div class="row min-vh-100 no-gutters">
       <header
-        class="col-12 col-lg-3 bg-dark text-light sticky-top d-flex flex-column p-4 p-lg-3"
+        class="
+          col-12 col-lg-3
+          bg-dark
+          text-light
+          sticky-top
+          d-flex
+          flex-column
+          p-4 p-lg-3
+        "
       >
         <h1 class="text-center">Taskmaster Pro Edition</h1>
         <button
@@ -40,8 +58,7 @@
           <div class="col-12 col-md-6 col-xl-3 mb-3">
             <div class="card">
               <h4 class="card-header bg-dark text-light">To Do</h4>
-              <ul id="list-toDo" class="list-group list-group-flush">
-              </ul>
+              <ul id="list-toDo" class="list-group list-group-flush"></ul>
             </div>
           </div>
           <!-- todo end -->
@@ -49,8 +66,7 @@
           <div class="col-12 col-md-6 col-xl-3 mb-3">
             <div class="card">
               <h4 class="card-header bg-dark text-light">In Progress...</h4>
-              <ul id="list-inProgress" class="list-group list-group-flush">
-              </ul>
+              <ul id="list-inProgress" class="list-group list-group-flush"></ul>
             </div>
           </div>
           <!-- in progress end -->
@@ -58,8 +74,7 @@
           <div class="col-12 col-md-6 col-xl-3 mb-3">
             <div class="card">
               <h4 class="card-header bg-dark text-light">In Review</h4>
-              <ul id="list-inReview" class="list-group list-group-flush">
-              </ul>
+              <ul id="list-inReview" class="list-group list-group-flush"></ul>
             </div>
           </div>
           <!-- in review end -->
@@ -67,8 +82,7 @@
           <div class="col-12 col-md-6 col-xl-3 mb-3">
             <div class="card">
               <h4 class="card-header bg-dark text-light">FINITO!!</h4>
-              <ul id="list-done" class="list-group list-group-flush">
-              </ul>
+              <ul id="list-done" class="list-group list-group-flush"></ul>
             </div>
           </div>
           <!-- done end -->
@@ -107,7 +121,11 @@
             <form>
               <div class="form-group">
                 <label for="modalTaskDescription">Task description</label>
-                <textarea id="modalTaskDescription" rows="3" class="form-control"></textarea>
+                <textarea
+                  id="modalTaskDescription"
+                  rows="3"
+                  class="form-control"
+                ></textarea>
               </div>
               <div class="form-group">
                 <label for="modalDueDate">Due date</label>
