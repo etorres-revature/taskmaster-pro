@@ -1,6 +1,6 @@
 let tasks = {};
 
-let createTask = function(taskText, taskDate, taskList) {
+let createTask = function (taskText, taskDate, taskList) {
   // create elements that make up a task item
   let taskLi = $("<li>").addClass("list-group-item");
   let taskSpan = $("<span>")
@@ -15,7 +15,7 @@ let createTask = function(taskText, taskDate, taskList) {
   $("#list-" + taskList).append(taskLi);
 };
 
-let loadTasks = function() {
+let loadTasks = function () {
   tasks = JSON.parse(localStorage.getItem("tasks"));
 
   // if nothing in localStorage, create a new object to track all task status arrays
@@ -29,7 +29,7 @@ let loadTasks = function() {
   }
 
   // loop over object properties
-  $.each(tasks, function(list, arr) {
+  $.each(tasks, function (list, arr) {
     // then loop over sub-array
     arr.forEach(function (task) {
       createTask(task.text, task.date, list);
@@ -48,9 +48,9 @@ $(".list-group").on("click", "p", function () {
   textInput.trigger("focus");
 });
 
-$(".list-group").on("blur", "textarea", function(){
+$(".list-group").on("blur", "textarea", function () {
   // get the textarea's current value/text
-  let text=$(this).val().trim();
+  let text = $(this).val().trim();
 
   //get the parent ul's id attribute
   let status = $(this).closest(".list-group").attr("id").replace("list-", "");
@@ -69,12 +69,15 @@ $(".list-group").on("blur", "textarea", function(){
 });
 
 // due date was clicked
-$(".list-group").on("click", "span", function() {
+$(".list-group").on("click", "span", function () {
   //get current text
   let date = $(this).text().trim();
 
   //create new input element
-  let dateInput = $("<input>").attr("type", "text").addClass("form-control").val(date);
+  let dateInput = $("<input>")
+    .attr("type", "text")
+    .addClass("form-control")
+    .val(date);
 
   //swap out the elements
   $(this).replaceWith(dateInput);
@@ -84,14 +87,14 @@ $(".list-group").on("click", "span", function() {
 });
 
 // due date altered state removal
-$(".list-group").on("blur", "input[type='text']", function() {
+$(".list-group").on("blur", "input[type='text']", function () {
   // get current date text
   let date = $(this).val().trim();
 
   // get parent ul's id attribute
   let status = $(this).closest(".list-group").attr("id").replace("list-", "");
 
-  //get the task's position in the list of li elements 
+  //get the task's position in the list of li elements
   let index = $(this).closest(".list-group-item").index();
 
   // update task in array and re-save to localStorage
@@ -99,10 +102,56 @@ $(".list-group").on("blur", "input[type='text']", function() {
   saveTasks();
 
   // recreate span element with bootstap classes
-  let taskSpan = $("<span>").addClass("badge badge-primary badge-pill").text(date);
+  let taskSpan = $("<span>")
+    .addClass("badge badge-primary badge-pill")
+    .text(date);
 
   // replace input with span element
   $(this).replaceWith(taskSpan);
+});
+
+$(".card .list-group").sortable({
+  connectWith: $(".card .list-group"),
+  scroll: false,
+  tolerance: "pointer",
+  helper: "clone",
+  activate: function (event) {
+    console.log("activate", this);
+  },
+  deactivate: function (event) {
+    console.log("deactivate", this);
+  },
+  over: function (event) {
+    console.log("over", event.target);
+  },
+  out: function (event) {
+    console.log("out", event.target);
+  },
+  update: function (event) {
+    // array to store tasks
+    let tempTaskArr = [];
+
+    // loop over current set of children in sortable list
+    $(this)
+      .children()
+      .each(function () {
+        let text = $(this).find("p").text().trim();
+
+        let date = $(this).find("span").text().trim();
+
+        // add task data to temp task array as object
+        tempTaskArr.push({
+          text,
+          date,
+        });
+      });
+    // trim down list's ID to match object property
+    let arrName = $(this).attr("id").replace("list-", "");
+
+    // update array on tasks object and save
+    tasks[arrName] = tempTaskArr;
+    saveTasks();
+  },
 });
 
 // modal was triggered
