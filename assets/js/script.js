@@ -158,15 +158,19 @@ $(".card .list-group").sortable({
   helper: "clone",
   activate: function (event) {
     $(this).addClass("dropover");
+    $(".trash").addClass("trash-drag");
   },
   deactivate: function (event) {
     $(this).removeClass("dropover");
+    $(".trash").removeClass("trash-drag");
   },
   over: function (event) {
     $(this).addClass("dropover-active");
+    $(".trash").addClass("trash-active");
   },
   out: function (event) {
     $(this).removeClass("dropover-active");
+    $(".trash").removeClass("trash-active");
   },
   update: function (event) {
     // array to store tasks
