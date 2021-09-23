@@ -13,6 +13,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
     />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Staatliches&display=swap"
       rel="stylesheet"
     />
@@ -40,12 +44,13 @@
           data-toggle="modal"
           data-target="#task-form-modal"
         >
-          Add Task
+          <span class="oi oi-plus mr-2"></span>Add Task
         </button>
         <button id="remove-tasks" class="btn btn-block btn-danger">
-          Delete All Tasks
+          <span class="oi oi-trash"></span> Delete All Tasks
         </button>
-        <p class="mt-auto d-none d-lg-block">
+        <span class="oi oi-task display-1 text-center mb-2 d-none d-lg-block mt-auto"></span>
+        <p class="d-none d-lg-block">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptas
           architecto ipsa excepturi aut non laudantium sequi fugit officiis
           optio deleniti asperiores rem eius laborum maxime blanditiis culpa,
@@ -89,7 +94,7 @@
         </div>
         <div class="mt-auto" id="trash">
           <div class="w-100 bg-danger p-3 text-center text-light display-4">
-            DROP HERE TO REMOVE TASK
+            <span class="oi oi-trash"></span> DROP HERE TO REMOVE TASK
           </div>
         </div>
       </main>
